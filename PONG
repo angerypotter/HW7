@@ -159,7 +159,7 @@ function updateState() {
     if (ball.x > borders.rightx - paddle2.width - ball.size / 2) {
       if ((ball.y > paddle2.y) &&
         (ball.y < (paddle2.y + paddle2.length))) {
-        ball.xvelocity = -ball.xvelocity * 1.3;
+        ball.xvelocity = -ball.xvelocity * 1.2;
       } else {
         score.player1 = score.player1 + 1;
         GAMESTATE = 'POINT';
@@ -168,7 +168,7 @@ function updateState() {
     if (ball.x < borders.leftx + paddle1.width + ball.size / 2) {
       if ((ball.y > paddle1.y) &&
         (ball.y < (paddle1.y + paddle1.length))) {
-        ball.xvelocity = -ball.xvelocity * 1.3;
+        ball.xvelocity = -ball.xvelocity * 1.2;
       } else {
         score.player2 = score.player2 + 1;
         GAMESTATE = 'POINT';
