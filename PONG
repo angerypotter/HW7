@@ -41,22 +41,28 @@ var keypress = {
   l: false, // down player 2
   spacebar: false // start signal for game 
 }
-
+// function preload() {
+//   explode = loadSound('assets/explode.mp3');
+//   boing = loadSound('assets/boing.mp3');
+//   lose = loadSound('assets/whammy.mp3');
 
 
 // the preload function is empty for now.  this is where you can load mp3 
 // sounds to play when the game state enters GAME OVER and POINT.  
-function preload() {}
+
+function preload() {
+  osc = new p5.Oscillator();
+  osc.setType('sine');
+  osc.freq(240);
+  osc.amp(0);
+  osc.start(0.5);
+}
 
 function setup() {
   createCanvas(400, 400);
 
   // i added some code here to initialize an oscillator!!!
-  osc = new p5.Oscillator();
-  osc.setType('sine');
-  osc.freq(240);
-  osc.amp(0);
-  osc.start();
+
 }
 
 // this mainloop contains the three functions that do everything that our program will do
@@ -121,6 +127,7 @@ function updateState() {
       GAMESTATE = 'PLAY';
     }
   } else if (GAMESTATE == 'GAMEOVER') {
+
     if (keypress.spacebar == true) {
       GAMESTATE = 'START';
     }
@@ -160,17 +167,44 @@ function updateState() {
       if ((ball.y > paddle2.y) &&
         (ball.y < (paddle2.y + paddle2.length))) {
         ball.xvelocity = -ball.xvelocity * 1.2;
+        osc.amp(0.5, 0.05);
+        osc.freq(140);
+        playing = true;
+
+        osc.amp(0, 0.5);
+        playing = false;
+
       } else {
         score.player1 = score.player1 + 1;
         GAMESTATE = 'POINT';
+        osc.amp(0.5, 0.05);
+        osc.freq(400);
+        playing = true;
+
+        osc.amp(0, 0.5);
+        playing = false;
       }
     }
     if (ball.x < borders.leftx + paddle1.width + ball.size / 2) {
       if ((ball.y > paddle1.y) &&
         (ball.y < (paddle1.y + paddle1.length))) {
         ball.xvelocity = -ball.xvelocity * 1.2;
+        osc.amp(0.5, 0.05);
+        osc.freq(140);
+        playing = true;
+
+        osc.amp(0, 0.5);
+        playing = false;
+
       } else {
         score.player2 = score.player2 + 1;
+        osc.amp(0.5, 0.05);
+        osc.freq(400);
+        playing = true;
+
+        osc.amp(0, 0.5);
+        playing = false;
+
         GAMESTATE = 'POINT';
       }
     }
@@ -234,7 +268,7 @@ function drawStuff() {
   } else if (GAMESTATE == 'POINT') {
 
     // play point sound
-    osc.amp(0.5, 0.05);
+
     textAlign(CENTER);
     text('press SPACEBAR to continue', width / 2, height / 2);
   } else if (GAMESTATE == 'GAMEOVER') {
@@ -242,8 +276,8 @@ function drawStuff() {
     // text GAME OVER and WINNER!
     textAlign(CENTER);
     text('GAMEOVER', width / 2, height / 2);
-
-
+   
+  
   }
 }
 
@@ -265,5 +299,4 @@ function initializePositions() {
   paddle2.x = borders.rightx - paddle2.width;
   paddle2.y = height / 2;
 
-  osc.amp(0.0, 0.05);
 }
