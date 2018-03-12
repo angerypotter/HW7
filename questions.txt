@@ -1,0 +1,18 @@
+Voltage is:
+Thepotential energy, stored in the form of an electric charge imbalance that is capable of provoking electrons to
+flow through a conductor, it can be expressed as a term called voltage, which technically is a measure of 
+potential energy per unit charge of electrons, or something a physicist would call specific potential energy.
+
+Resistance is:
+As the electrons work their way through the thin metal filament of the lamp, they encounter more opposition to 
+motion than they typically would in a thick piece of wire. This opposition to electric current depends on the 
+type of material, its cross-sectional area, and its temperature. It is technically known as resistance. 
+(It can be said that conductors have low resistance and insulators have very high resistance.)
+
+A Short Circut is considered a closed circut
+
+An open circuit is one where the continuity has been broken by an interruption in the path for electrons to flow.
+A closed circuit is one that is complete, with good continuity throughout.
+
+Yes I did BUT my PC required a driver DL and the Feather 32u4 was not in the driver packet so we will see if it 
+works in the morning.
